@@ -1,0 +1,4 @@
+(sym_lib_table
+  (lib (name rombender)(type Legacy)(uri ${KIPRJMOD}/rombender.lib)(options "")(descr ""))
+  (lib (name rombender-rescue)(type Legacy)(uri ${KIPRJMOD}/rombender-rescue.lib)(options "")(descr ""))
+)
