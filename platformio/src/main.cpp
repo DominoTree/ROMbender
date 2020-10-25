@@ -19,6 +19,35 @@ void set_data(byte data)
   PORTA = data;
 }
 
+void mem_ce(uint8_t state) 
+{
+  pinMode(PE7, OUTPUT);
+  digitalWrite(PE7, state);
+}
+
+void mem_oe(uint8_t state) 
+{
+  pinMode(PE6, OUTPUT);
+  digitalWrite(PE6, state);
+}
+
+void mem_we(uint8_t state) 
+{
+  pinMode(PE5, OUTPUT);
+  digitalWrite(PE5, state);
+}
+
+void write_byte(u16 addr, byte data)
+{
+  set_addr(addr);
+  set_data(data);
+  delay(1);
+  mem_we(LOW);  //latch addr
+  delay(1);
+  mem_we(HIGH); //latch data
+  delay(1);
+}
+
 //AT28C256
 void disable_sdp() {
   write_byte(0x5555, 0xAA);
@@ -38,35 +67,6 @@ void erase_chip() {
   write_byte(0x2AAA, 0x55);
   write_byte(0x5555, 0x10);
   delay(20);
-}
-
-void write_byte(u16 addr, byte data)
-{
-  set_addr(addr);
-  set_data(data);
-  delay(1);
-  mem_we(LOW);  //latch addr
-  delay(1);
-  mem_we(HIGH); //latch data
-  delay(1);
-}
-
-void mem_ce(uint8_t state) 
-{
-  pinMode(PE7, OUTPUT);
-  digitalWrite(PE7, state);
-}
-
-void mem_oe(uint8_t state) 
-{
-  pinMode(PE6, OUTPUT);
-  digitalWrite(PE6, state);
-}
-
-void mem_we(uint8_t state) 
-{
-  pinMode(PE5, OUTPUT);
-  digitalWrite(PE5, state);
 }
 
 void enable_outputs()
