@@ -134,8 +134,6 @@ Wire Notes Line
 Text Notes 7350 600  0    50   ~ 0
 SD Interface
 Wire Wire Line
-	10600 3100 10400 3100
-Wire Wire Line
 	10600 3000 10600 3100
 Connection ~ 10100 3100
 Wire Wire Line
@@ -362,11 +360,6 @@ F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/doc0014.pdf" H 1250 6400 50
 	1    1250 6400
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	10400 2800 10400 3100
-Connection ~ 10400 3100
-Wire Wire Line
-	10400 3100 10100 3100
 $Comp
 L Device:Crystal_GND24 Y1
 U 1 1 5F1824F6
@@ -579,10 +572,6 @@ Text Label 3000 2350 0    50   ~ 0
 MOSI
 Text Label 3000 2450 0    50   ~ 0
 MISO
-Text Label 3000 4250 0    50   ~ 0
-UART_Tx
-Text Label 3000 4150 0    50   ~ 0
-UART_Rx
 Text Label 1800 3950 2    50   ~ 0
 PDI
 Text Label 1800 4050 2    50   ~ 0
@@ -796,4 +785,9 @@ Wire Wire Line
 Connection ~ 9150 750 
 Wire Wire Line
 	9150 750  9150 850 
+Wire Wire Line
+	10100 3100 10600 3100
+Text Notes 2150 3700 1    50   ~ 0
+JTAG - PF[4:7]
+NoConn ~ 1800 2050
 $EndSCHEMATC
