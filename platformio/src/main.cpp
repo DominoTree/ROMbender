@@ -91,7 +91,7 @@ void init_rom() {
   {
     write_byte(addr, sk1_rom_bin[addr]);
   }
-  //lol as a full array it's too big for this avr
+  //lol as a full array it's too big for this avr to address
   write_byte(32767, 0x7c);
 
   //set CE/OE to tri-state and let the device take over
@@ -108,10 +108,20 @@ void setup()
   delay(20);
   init_rom();
   disable_outputs();
+
+  //turn these on for now
+  mem_ce(LOW);
+  mem_oe(LOW);
+  randomSeed(analogRead(PE1)); //PE1 and PE2 should both be floating
 }
 
 void loop()
 {
+  //just read back one random address every second and see if we get data
   delay(1000);
+  u16 rand_addr = random(32767);
+  set_addr(rand_addr);
+  Serial.print(rand_addr);
+  Serial.print(" = ");
   Serial.println(PORTA);
 }
