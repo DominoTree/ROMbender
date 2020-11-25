@@ -13,7 +13,7 @@ fuses:
 	sudo avrdude -c atmelice_isp -p m64 -U efuse:w:0xFF:m
 
 upload: all
-	sudo avrdude -c atmelice_isp -p m64 -U flash:w:target/avr-atmega64a/release/template-bin.elf
+	sudo avrdude -c atmelice_isp -p m64 -U flash:w:target/avr-atmega64a/release/rombender.elf
 
 clean:
 	cargo clean
